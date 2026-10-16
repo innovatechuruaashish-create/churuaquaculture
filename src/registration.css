@@ -1,0 +1,412 @@
+/* ==========================================================================
+   REGISTRATION PAGE — clean, card based, responsive
+   Scoped under .reg-page; loaded last so it wins over legacy rules.
+   ========================================================================== */
+
+.reg-page {
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 12px 12px 32px !important;
+  gap: 24px !important;
+}
+
+/* ---- Hero -------------------------------------------------------------- */
+.reg-page .reg-hero {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 32px 28px !important;
+  text-align: left !important;
+  border: 0 !important;
+  border-radius: 20px !important;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.18), transparent 45%),
+    linear-gradient(135deg, #0c5a3e 0%, #0f7a54 60%, #13896a 100%) !important;
+  box-shadow: 0 18px 40px rgba(12, 90, 62, 0.22) !important;
+}
+
+.reg-page .reg-hero h1 {
+  margin: 6px 0 8px !important;
+  font-size: clamp(1.4rem, 3.2vw, 2.2rem) !important;
+  line-height: 1.3 !important;
+  color: #ffffff !important;
+  max-width: 820px;
+}
+
+.reg-page .reg-hero p {
+  margin: 0 !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-size: 0.95rem;
+}
+
+.reg-page .reg-hero .eyebrow {
+  display: inline-block;
+  padding: 4px 12px !important;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff !important;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ---- Layout ------------------------------------------------------------ */
+.reg-page .registration-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 320px !important;
+  gap: 24px !important;
+  align-items: start !important;
+}
+
+.reg-page .premium-form {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ---- Section cards ----------------------------------------------------- */
+.reg-card {
+  background: #ffffff;
+  border: 1px solid #e2e8e4;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+html[data-theme='dark'] .reg-card {
+  background: #0f2e24;
+  border-color: #1f4636;
+}
+
+.reg-page .form-section-title {
+  display: flex !important;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 20px !important;
+  padding: 0 0 16px !important;
+  border-bottom: 1px solid #e8eeea;
+}
+
+.reg-page .form-section-title > span {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40px;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, #0c5a3e, #13896a) !important;
+  color: #ffffff !important;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0 !important;
+}
+
+.reg-page .form-section-title h2 {
+  margin: 0 !important;
+  font-size: 1.1rem !important;
+  line-height: 1.3 !important;
+}
+
+.reg-page .form-section-title p {
+  margin: 2px 0 0 !important;
+  font-size: 0.84rem;
+  color: #64748b;
+}
+
+/* ---- Fields ------------------------------------------------------------ */
+.reg-page .form-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 16px 20px !important;
+  margin: 0 !important;
+}
+
+.reg-page .form-grid label,
+.reg-page .document-info-panel label {
+  display: flex !important;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 !important;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #334155;
+}
+
+.reg-page .form-grid input,
+.reg-page .form-grid select {
+  width: 100% !important;
+  height: 46px;
+  padding: 0 14px !important;
+  margin: 0 !important;
+  border: 1.5px solid #d5ded8 !important;
+  border-radius: 10px !important;
+  background: #f9fbfa !important;
+  color: #0f172a;
+  font-size: 0.92rem;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
+  box-sizing: border-box;
+}
+
+.reg-page .form-grid input::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.reg-page .form-grid input:focus,
+.reg-page .form-grid select:focus {
+  border-color: #0c5a3e !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(12, 90, 62, 0.14);
+}
+
+.reg-page .form-grid input[readonly] {
+  background: #eef2ef !important;
+  color: #64748b;
+  cursor: not-allowed;
+}
+
+html[data-theme='dark'] .reg-page .form-grid label,
+html[data-theme='dark'] .reg-page .document-info-panel label {
+  color: #cbd5e1;
+}
+
+html[data-theme='dark'] .reg-page .form-grid input,
+html[data-theme='dark'] .reg-page .form-grid select {
+  background: #0b2219 !important;
+  border-color: #24503d !important;
+  color: #e1f0e4;
+}
+
+/* ---- Upload panel ------------------------------------------------------ */
+.reg-page .document-info-panel {
+  margin: 18px 0 0 !important;
+  padding: 18px !important;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 20px;
+  border: 1.5px dashed #9fc4b3 !important;
+  border-radius: 14px !important;
+  background: #f3f9f6 !important;
+}
+
+.reg-page .document-info-panel .eyebrow {
+  grid-column: 1 / -1;
+  margin: 0 !important;
+}
+
+.reg-page .document-info-panel input[type='file'] {
+  width: 100%;
+  padding: 8px;
+  border: 1.5px solid #d5ded8;
+  border-radius: 10px;
+  background: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+.reg-page .document-info-panel input[type='file']::file-selector-button {
+  margin-right: 12px;
+  padding: 7px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #0c5a3e;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+html[data-theme='dark'] .reg-page .document-info-panel {
+  background: rgba(39, 174, 123, 0.08) !important;
+  border-color: #2f7a5a !important;
+}
+
+/* ---- Declaration & submit ---------------------------------------------- */
+.reg-page .form-footer {
+  display: flex !important;
+  flex-direction: column;
+  align-items: stretch !important;
+  gap: 16px;
+  margin: 0 !important;
+  padding: 22px 24px !important;
+  background: #ffffff;
+  border: 1px solid #e2e8e4 !important;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+html[data-theme='dark'] .reg-page .form-footer {
+  background: #0f2e24;
+  border-color: #1f4636 !important;
+}
+
+.reg-page .declaration {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 0 !important;
+  padding: 16px;
+  border: 1px solid #bbf7d0;
+  border-left: 4px solid #0c5a3e;
+  border-radius: 12px;
+  background: #f0fdf4;
+  cursor: pointer;
+}
+
+.reg-page .declaration input {
+  flex: 0 0 20px;
+  width: 20px !important;
+  height: 20px !important;
+  margin-top: 4px !important;
+  accent-color: #0c5a3e;
+}
+
+.reg-page .declaration span {
+  margin: 0 !important;
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: #14532d;
+}
+
+html[data-theme='dark'] .reg-page .declaration {
+  background: rgba(39, 174, 123, 0.1);
+  border-color: rgba(39, 174, 123, 0.35);
+}
+
+html[data-theme='dark'] .reg-page .declaration span {
+  color: #c7ecd4;
+}
+
+.reg-page .form-footer .primary-btn {
+  align-self: flex-end;
+  min-width: 220px;
+  height: 50px;
+  border-radius: 12px !important;
+  font-size: 1rem;
+}
+
+.reg-page .form-message {
+  margin: 0 !important;
+  padding: 14px 16px !important;
+  border-radius: 12px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* ---- Sidebar ----------------------------------------------------------- */
+.reg-page .sticky-card {
+  position: sticky;
+  top: 90px;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 22px !important;
+  background: #ffffff;
+  border: 1px solid #e2e8e4;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+html[data-theme='dark'] .reg-page .sticky-card {
+  background: #0f2e24;
+  border-color: #1f4636;
+}
+
+.reg-page .sticky-card h2 {
+  margin: 4px 0 12px !important;
+  font-size: 1.05rem;
+}
+
+.reg-page .checklist-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: none !important;
+}
+
+.reg-page .checklist-scroll p {
+  margin: 0 !important;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f3f9f6;
+  border: 1px solid #dcebe3;
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+html[data-theme='dark'] .reg-page .checklist-scroll p {
+  background: rgba(39, 174, 123, 0.1);
+  border-color: rgba(39, 174, 123, 0.25);
+}
+
+/* ---- Responsive -------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .reg-page .registration-layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .reg-page .sticky-card {
+    position: static;
+    order: -1;
+  }
+}
+
+@media (max-width: 680px) {
+  .reg-page {
+    padding: 8px 8px 28px !important;
+    gap: 16px !important;
+  }
+
+  .reg-page .reg-hero {
+    padding: 22px 18px !important;
+    border-radius: 16px !important;
+  }
+
+  .reg-card,
+  .reg-page .form-footer {
+    padding: 18px 16px !important;
+    border-radius: 14px;
+  }
+
+  .reg-page .form-grid,
+  .reg-page .document-info-panel {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .reg-page .form-footer .primary-btn {
+    align-self: stretch;
+    width: 100%;
+  }
+}
+
+/* ---- Alignment fixes --------------------------------------------------- */
+.reg-page {
+  margin-top: 12px !important;
+  box-sizing: border-box;
+}
+
+.reg-page .registration-layout {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.reg-page .reg-hero .eyebrow {
+  width: fit-content !important;
+  max-width: 100%;
+  margin: 0 !important;
+}

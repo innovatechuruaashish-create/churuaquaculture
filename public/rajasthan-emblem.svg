@@ -1,0 +1,11 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Government emblem">
+  <rect width="128" height="128" rx="18" fill="#0F172A"/>
+  <path d="M64 15C54 25 47 34 47 46C47 55 52 62 64 70C76 62 81 55 81 46C81 34 74 25 64 15Z" fill="#F8FAFC"/>
+  <path d="M31 45C25 52 22 60 25 69C28 79 38 84 51 85C52 70 48 58 39 49C36 46 33 45 31 45Z" fill="#F8FAFC"/>
+  <path d="M97 45C103 52 106 60 103 69C100 79 90 84 77 85C76 70 80 58 89 49C92 46 95 45 97 45Z" fill="#F8FAFC"/>
+  <path d="M44 91H84L78 105H50L44 91Z" fill="#F8FAFC"/>
+  <path d="M38 108H90V116H38V108Z" fill="#F8FAFC"/>
+  <circle cx="64" cy="98" r="10" stroke="#0F172A" stroke-width="3"/>
+  <path d="M64 89V107M55 98H73M58 92L70 104M70 92L58 104" stroke="#0F172A" stroke-width="2" stroke-linecap="round"/>
+  <path d="M37 38C39 28 47 19 55 12M91 38C89 28 81 19 73 12" stroke="#F8FAFC" stroke-width="4" stroke-linecap="round"/>
+</svg>

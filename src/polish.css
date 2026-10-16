@@ -1,0 +1,167 @@
+/* ==========================================================================
+   GLOBAL POLISH — spacing, smooth motion, loaders (loaded last)
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---- Consistent page frame -------------------------------------------- */
+.site-shell .page-stack {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 12px 0 0 !important;
+  padding: 0 12px 32px !important;
+  gap: 18px !important;
+  box-sizing: border-box !important;
+}
+
+.site-shell .admin-dashboard-container {
+  max-width: none;
+  width: 100%;
+  margin: 12px 0 0;
+  padding: 0 12px 32px;
+  box-sizing: border-box;
+}
+
+.site-shell .page-hero {
+  border-radius: 18px;
+}
+
+/* ---- Smooth interactions ---------------------------------------------- */
+button,
+.primary-btn,
+.ghost-btn,
+.secondary-btn,
+.sidebar-nav-item,
+.stat-interactive,
+.flow-step,
+.export-list-item,
+.admin-data-table tbody tr,
+input,
+select,
+textarea {
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease,
+    box-shadow 220ms ease,
+    transform 200ms ease,
+    opacity 200ms ease;
+}
+
+button:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+button:disabled {
+  opacity: 0.6;
+}
+
+:focus-visible {
+  outline: 2px solid #0c5a3e;
+  outline-offset: 2px;
+}
+
+/* Tab / panel switches fade in instead of popping */
+.dashboard-tab-content,
+.admin-main-panel > .records-panel,
+.admin-main-panel > .dashboard-tab-content {
+  animation: panelFade 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes panelFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.document-modal-overlay {
+  animation: overlayFade 200ms ease both;
+}
+
+@keyframes overlayFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.admin-sidebar {
+  transition: transform 260ms ease, opacity 260ms ease;
+}
+
+/* ---- Loaders ----------------------------------------------------------- */
+.page-loader,
+.panel-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 220px;
+  color: #475569;
+  font-weight: 600;
+}
+
+.page-loader {
+  min-height: 55vh;
+}
+
+.page-loader-spinner {
+  width: 26px;
+  height: 26px;
+  border: 3px solid rgba(12, 90, 62, 0.2);
+  border-top-color: #0c5a3e;
+  border-radius: 50%;
+  animation: loaderSpin 0.8s linear infinite;
+}
+
+@keyframes loaderSpin {
+  to { transform: rotate(360deg); }
+}
+
+.admin-main-panel.is-loading > :not(.panel-loader) {
+  display: none;
+}
+
+.panel-loader {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+html[data-theme='dark'] .panel-loader {
+  background: #0f2e24;
+  color: #cbd5e1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 680px) {
+  .site-shell .page-stack,
+  .site-shell .admin-dashboard-container {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+}
+
+/* Footer uses the full width too */
+.site-shell .mega-footer .footer-inner,
+.site-shell .mega-footer .footer-grid {
+  max-width: none !important;
+  width: 100% !important;
+}

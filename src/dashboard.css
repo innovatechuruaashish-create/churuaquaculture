@@ -1,0 +1,547 @@
+/* ==========================================================================
+   ADMIN DASHBOARD — export, revert, declaration & responsive refinements
+   (loaded after App.css / responsive.css)
+   ========================================================================== */
+
+/* ---- Section header actions ------------------------------------------- */
+.records-heading {
+  align-items: flex-start;
+  gap: 12px 16px;
+}
+
+.export-section-btn,
+.export-quick-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.export-action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* ---- Row action buttons ------------------------------------------------ */
+.table-actions-inline {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.table-actions-inline .btn-sm,
+.table-actions-inline .btn-xs {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.btn-revert-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff7ed;
+  color: #c2410c;
+  border: 1px solid #fdba74;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.btn-revert-action:hover {
+  background: #ffedd5;
+  border-color: #fb923c;
+}
+
+html[data-theme='dark'] .btn-revert-action {
+  background: rgba(234, 88, 12, 0.14);
+  color: #fdba74;
+  border-color: rgba(251, 146, 60, 0.4);
+}
+
+.revert-submit-btn {
+  background: linear-gradient(135deg, #ea580c, #c2410c) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---- Detail modal ------------------------------------------------------ */
+.application-detail-modal {
+  width: min(960px, 98vw);
+}
+
+.detail-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 20px;
+}
+
+.detail-fields-grid > div {
+  padding: 8px 12px;
+  background: rgba(12, 90, 62, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.detail-fields-grid > div strong {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 2px !important;
+}
+
+.detail-fields-grid > .detail-field-wide {
+  grid-column: 1 / -1;
+}
+
+.declaration-box {
+  padding: 14px 16px;
+  border: 1px solid #bbf7d0;
+  border-left: 4px solid var(--teal);
+  background: #f0fdf4;
+  color: #14532d;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  line-height: 1.85;
+  white-space: pre-wrap;
+}
+
+html[data-theme='dark'] .declaration-box {
+  background: rgba(39, 174, 123, 0.1);
+  border-color: rgba(39, 174, 123, 0.35);
+  color: #c7ecd4;
+}
+
+.declaration-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  margin-top: 10px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.declaration-state {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.74rem;
+  letter-spacing: 0.3px;
+}
+
+.declaration-state.accepted {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.declaration-state.pending {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.document-modal-footer {
+  flex-wrap: wrap;
+}
+
+/* ---- Download report dropdown (detail modal footer) ------------------- */
+.export-menu-wrap {
+  position: relative;
+}
+
+.export-menu-wrap > .ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.export-menu {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
+  z-index: 20;
+}
+
+html[data-theme='dark'] .export-menu {
+  background: #0f2e24;
+}
+
+.export-menu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink);
+  font-size: 0.86rem;
+  font-weight: 650;
+  text-align: left;
+  cursor: pointer;
+}
+
+.export-menu button:hover {
+  background: rgba(12, 90, 62, 0.1);
+}
+
+/* ---- Export dialog ----------------------------------------------------- */
+.export-dialog {
+  width: min(680px, 98vw);
+}
+
+.export-dialog-body {
+  gap: 14px;
+}
+
+.export-format-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.export-format-toggle button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  text-align: left;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+
+.export-format-toggle button strong {
+  display: block;
+  margin: 0 !important;
+  font-size: 0.95rem;
+}
+
+.export-format-toggle button small {
+  display: block;
+  margin: 2px 0 0 !important;
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.35;
+}
+
+.export-format-toggle button.active {
+  border-color: var(--teal);
+  background: rgba(12, 90, 62, 0.08);
+}
+
+.export-format-toggle button.active svg {
+  color: var(--teal);
+}
+
+.export-select-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.export-select-toolbar .search-input-wrap {
+  flex: 1 1 220px;
+}
+
+.export-select-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+  margin: 0 !important;
+  white-space: nowrap;
+}
+
+.export-select-all span {
+  margin: 0 !important;
+}
+
+.export-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.export-list-item {
+  display: flex !important;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 0 !important;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.export-list-item:hover {
+  background: rgba(12, 90, 62, 0.05);
+}
+
+.export-list-item.selected {
+  border-color: var(--teal);
+  background: rgba(12, 90, 62, 0.08);
+}
+
+.export-item-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.export-item-main strong,
+.export-item-main small {
+  display: block;
+  margin: 0 !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.export-item-main small {
+  color: var(--muted);
+  font-size: 0.76rem;
+  margin-top: 2px !important;
+}
+
+.export-count {
+  margin-right: auto !important;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* ---- Responsive -------------------------------------------------------- */
+@media (max-width: 720px) {
+  .detail-fields-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .export-format-toggle {
+    grid-template-columns: 1fr;
+  }
+
+  .document-modal-overlay {
+    padding: 8px;
+    align-items: flex-end;
+  }
+
+  .document-modal {
+    width: 100% !important;
+    max-height: 94vh;
+    border-radius: 16px 16px 12px 12px;
+  }
+
+  .document-modal-footer {
+    justify-content: stretch;
+  }
+
+  .document-modal-footer > .ghost-btn,
+  .document-modal-footer > .primary-btn,
+  .document-modal-footer > .secondary-btn,
+  .export-menu-wrap {
+    flex: 1 1 140px;
+  }
+
+  .export-menu-wrap > .ghost-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .export-menu {
+    left: 0;
+    right: 0;
+    min-width: 0;
+  }
+
+  .export-count {
+    flex: 1 1 100%;
+  }
+
+  .hero-action-buttons {
+    width: 100%;
+  }
+
+  .hero-action-buttons > button {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .records-heading {
+    flex-direction: column;
+  }
+
+  .export-action-bar {
+    justify-content: flex-start;
+  }
+}
+
+/* ---- Document viewer (real preview) ----------------------------------- */
+.doc-viewer-modal {
+  width: min(1000px, 98vw);
+  height: 88vh;
+  max-height: 88vh;
+}
+
+.doc-viewer-body {
+  padding: 0 !important;
+  background: #e2e8f0;
+  align-items: center;
+  justify-content: center;
+}
+
+.doc-viewer-frame {
+  width: 100%;
+  height: 100%;
+  min-height: 60vh;
+  border: 0;
+  background: #ffffff;
+  border-radius: 0 !important;
+}
+
+.doc-viewer-body .image-preview-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  overflow: auto;
+}
+
+.doc-viewer-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.doc-viewer-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 24px;
+  text-align: center;
+  color: #475569;
+}
+
+.doc-open-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+/* ---- Checkboxes: keep native size so names stay visible ---------------- */
+.export-dialog input[type='checkbox'],
+.admin-data-table input[type='checkbox'] {
+  appearance: auto;
+  -webkit-appearance: checkbox;
+  flex: 0 0 18px;
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px;
+  padding: 0 !important;
+  margin: 0 !important;
+  accent-color: #0c5a3e;
+  cursor: pointer;
+}
+
+/* ---- Export progress bar ------------------------------------------------ */
+.export-progress {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 3000;
+  width: min(360px, calc(100vw - 32px));
+  padding: 14px 16px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.28);
+  animation: panelFade 240ms ease both;
+}
+
+html[data-theme='dark'] .export-progress {
+  background: #0f2e24;
+  color: #e1f0e4;
+}
+
+.export-progress-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--teal);
+}
+
+.export-progress-head strong {
+  margin: 0 !important;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.export-progress-percent {
+  margin: 0 0 0 auto !important;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--teal);
+}
+
+.export-progress-track {
+  height: 10px;
+  margin: 10px 0 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e2e8f0;
+}
+
+.export-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0c5a3e, #27ae7b);
+  transition: width 300ms ease-out;
+}
+
+.export-progress.done .export-progress-fill {
+  background: #22c55e;
+}
+
+.export-progress small {
+  display: block;
+  margin: 0 !important;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
