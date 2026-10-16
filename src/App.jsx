@@ -16,7 +16,7 @@ const GuidelinesPage = lazy(() => import('./pages/GuidelinesPage'))
 const HomePage = lazy(() => import('./pages/HomePage'))
 const RegistrationPage = lazy(() => import('./pages/RegistrationPage'))
 const GalleryPage = lazy(() => import('./pages/GalleryPage'))
-const API_URL = "https://backend-of-fisheries.onrender.com /api";
+const API_URL = "https://backend-of-fisheries.onrender.com/api";
 const pages = {
   home: HomePage,
   registration: RegistrationPage,

@@ -33,7 +33,7 @@ import {
 import { exportCsv, exportPdf } from '../utils/exportApplications'
 import DocumentViewerContent from '../components/DocumentViewerContent'
 
-const API_URL = "https://backend-of-fisheries.onrender.com "
+const API_URL = "https://backend-of-fisheries.onrender.com"
 
 function StatusBadge({ status }) {
   const normStatus = (status || 'PENDING').toUpperCase()

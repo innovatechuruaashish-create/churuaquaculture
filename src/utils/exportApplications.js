@@ -223,9 +223,10 @@ const STATUS_COLORS = {
 
 const REPORT_CSS = `
   body { margin:0; background:#fff; }
-  .rpt-root { font-family: 'Noto Sans Devanagari','Poppins','Segoe UI',Arial,sans-serif; color:#0f172a; width:720px; background:#fff; }
-  .rpt-root, .rpt-root * { overflow-wrap:anywhere; min-width:0; }
-  .rpt-root div, .rpt-root table, .rpt-root td, .rpt-root th { box-sizing:border-box; font-family:'Noto Sans Devanagari','Poppins','Segoe UI',Arial,sans-serif; }
+  .rpt-root { font-family: 'Segoe UI','Helvetica Neue',Arial,'Noto Sans Devanagari',sans-serif; color:#0f172a; width:720px; background:#fff; }
+  .rpt-root, .rpt-root * { min-width:0; }
+  .rpt-value, .rpt-decl, .rpt-hist-table td { overflow-wrap:anywhere; }
+  .rpt-root div, .rpt-root table, .rpt-root td, .rpt-root th { box-sizing:border-box; font-family:'Segoe UI','Helvetica Neue',Arial,'Noto Sans Devanagari',sans-serif; }
   .rpt-page > div:not(.rpt-head) { padding-bottom:8px; }
   .rpt-page { width:720px; overflow:hidden; padding:6px 4px 0; background:#fff; }
   .rpt-head { background:#0c5a3e; color:#fff; padding:16px 20px; border-radius:10px; }
@@ -285,6 +286,42 @@ const REPORT_CSS = `
   .rpt-sign-line { width:230px; }
   .rpt-hist-table, .rpt-hist-table td, .rpt-hist-table th { font-size:9.5px; }
   .rpt-hist-table th, .rpt-hist-table td { padding:3px 6px; }
+
+  /* readability pass */
+  .rpt-root { color:#111827; }
+  .rpt-head { padding:12px 18px; border-radius:10px; }
+  .rpt-head-title { font-size:17px; letter-spacing:.2px; }
+  .rpt-head-sub { font-size:10.5px; margin-top:2px; }
+  .rpt-serial { font-size:11.5px; }
+  .rpt-idrow { padding:10px 2px 2px; }
+  .rpt-appno { font-size:16px; }
+  .rpt-appmeta { font-size:10.5px; }
+  .rpt-badge { font-size:10.5px; padding:4px 12px; }
+  .rpt-section { padding-top:9px; }
+  .rpt-section-title { font-size:11.5px; letter-spacing:.7px; padding-bottom:4px; margin-bottom:6px; border-bottom-width:2px; }
+  .rpt-grid td { padding:0 5px 5px 0; }
+  .rpt-field { padding:5px 9px; border-radius:6px; background:#f8fafc; border:1px solid #dfe6ee; }
+  .rpt-label { font-size:9px; color:#5b6b7f; letter-spacing:.5px; }
+  .rpt-value { font-size:11.5px; font-weight:600; margin-top:2px; line-height:1.4; }
+  .rpt-doc { font-size:10.5px; padding:4px 10px; }
+  .rpt-decl { padding:10px 13px; font-size:10.5px; line-height:1.6; }
+  .rpt-decl-p { margin-bottom:5px; }
+  .rpt-decl-meta { font-size:10.5px; margin-top:6px; }
+  .rpt-sign { margin-top:14px; font-size:10.5px; }
+  .rpt-hist-table, .rpt-hist-table td, .rpt-hist-table th { font-size:10.5px; }
+  .rpt-hist-table th, .rpt-hist-table td { padding:4px 7px; }
+
+  /* fit declaration + signature on the first page */
+  .rpt-head { padding:10px 18px; }
+  .rpt-idrow { padding:8px 2px 0; }
+  .rpt-section { padding-top:7px; }
+  .rpt-grid td { padding:0 5px 4px 0; }
+  .rpt-field { padding:4px 9px; }
+  .rpt-decl { padding:8px 12px; font-size:10px; line-height:1.5; }
+  .rpt-decl-p { margin-bottom:3px; }
+  .rpt-sign { margin-top:8px; }
+  .rpt-decl-meta { margin-top:4px; }
+  .rpt-value, .rpt-sign-line { word-spacing:1.5px; }
 `
 
 function field(label, value) {
@@ -383,7 +420,8 @@ function buildApplicationPage(application, index = 0, total = 1) {
         .map((paragraph) => `<div class="rpt-decl-p">${escapeHtml(paragraph)}</div>`)
         .join('')}
       <div class="rpt-decl-p"><b>Application Number:</b> ${escapeHtml(text(application.applicationNumber, '—'))}</div>
-    </div>
+    </div>`
+  const declarationFoot = `<div class="rpt-decl-foot">
     <div class="rpt-decl-meta">
       <b>Status:</b> ${escapeHtml(declarationLabel(application))}
       ${declaration.acceptedAt ? `&nbsp;&nbsp;|&nbsp;&nbsp;<b>Accepted on:</b> ${escapeHtml(dateTime(declaration.acceptedAt))}` : ''}
@@ -391,7 +429,8 @@ function buildApplicationPage(application, index = 0, total = 1) {
     <div class="rpt-sign">
       <div class="rpt-sign-line">Applicant Signature<br/>${escapeHtml(text(farmer.farmerName, '—'))} (S/D of ${escapeHtml(text(farmer.fatherName, '—'))})</div>
       <div class="rpt-sign-line">Date</div>
-    </div>`
+    </div>
+  </div>`
   const declarationSection = section('Declaration', declarationBody)
 
   const hasRecommendation =
@@ -447,6 +486,7 @@ function buildApplicationPage(application, index = 0, total = 1) {
       ${farmSection}
       ${documentsSection}
       ${declarationSection}
+      ${declarationFoot}
       ${recommendationSection}
       ${remarksSection}
       ${historySection}
@@ -545,7 +585,7 @@ export async function exportPdf(applications, fileName) {
 
       for (const block of blocks) {
         const canvas = await html2canvas(block, {
-          scale: 2,
+          scale: 3,
           useCORS: true,
           backgroundColor: '#ffffff',
           logging: false,
@@ -562,7 +602,7 @@ export async function exportPdf(applications, fileName) {
           y = margin
         }
 
-        pdf.addImage(canvas.toDataURL('image/jpeg', 0.95), 'JPEG', margin, y, contentW, h)
+        pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', margin, y, contentW, h)
         y += h + gap
 
         doneBlocks += 1

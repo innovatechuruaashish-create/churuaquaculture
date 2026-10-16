@@ -22,7 +22,7 @@ function AdminLogin({ onLogin }) {
       setError("");
 
       const response = await fetch(
-        "https://backend-of-fisheries.onrender.com /api/auth/login",
+        "https://backend-of-fisheries.onrender.com/api/auth/login",
         {
           method: "POST",
 

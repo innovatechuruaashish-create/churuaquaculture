@@ -183,7 +183,7 @@ async function handleSubmit(event) {
     // =========================
 
     const response = await fetch(
-      "https://backend-of-fisheries.onrender.com /api/application/create",
+      "https://backend-of-fisheries.onrender.com/api/application/create",
       {
         method: "POST",
         body: formData,
